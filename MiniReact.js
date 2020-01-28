@@ -1,24 +1,17 @@
 Object.prototype.prop_access = function(str) {
     if(typeof str !== "string" || !str) return '';
 
-    var newObj = this, returnValue = '';
+    var newObj = this;
     var strSplit = str.split(".");
     strSplit.forEach(element => {
-        if (!returnValue) {
-            newObj = newObj[element];
-            if (!newObj) {
-                console.error(str.substring(0, str.indexOf(element) + element.length) + " not exist");
-            }
+        newObj = newObj[element];
+        if (!newObj) {
+            console.error(str.substring(0, str.indexOf(element) + element.length) + " not exist");
         }
     });
 
-    if (returnValue) {
-        return returnValue;
-    } else {
-        return newObj;
-    }
+    return newObj;
 }
-
 
 //CHANGER PAR UN REPLACE AVEC REGEX
 String.prototype.interpolate = function(obj) {
@@ -44,13 +37,16 @@ export default class MiniReact {
                     elem.appendChild(arguments[i]);
                 }
             } 
-            for (let [key, value] of Object.entries(attributes)) {
-                elem.setAttribute(key, value);
+            if (attributes !== null) {
+                for (let [key, value] of Object.entries(attributes)) {
+                    if (typeof value == "string") {
+                        elem.setAttribute(key, value.interpolate(attributes));
+                    }
+                }
             }
             return elem;
         } else if (typeof name == 'object') {
             name.innerHTML = name.innerHTML.interpolate(attributes);
-            console.log(name);
             var elem = name;
             for (let i = 2; i<arguments.length; i++){
                 if (typeof arguments[i] == "string") {
@@ -58,9 +54,13 @@ export default class MiniReact {
                 } else {
                     elem.appendChild(arguments[i]);
                 }
-            } 
+            }
+            if (attributes !== null) {
             for (let [key, value] of Object.entries(attributes)) {
-                elem.setAttribute(key, value);
+                    if (typeof value == "string") {
+                        elem.setAttribute(key, value.interpolate(attributes));
+                    }
+                }
             }
             return elem;
         }

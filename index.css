@@ -1,0 +1,87 @@
+body {
+	margin: 0;
+}
+
+.page__all {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	background: #000;	
+}
+
+.google__block {
+	display: flex;
+	flex-direction: column;
+	width: max-content;
+	margin: auto;
+}
+
+.logo--google {
+	height: 110px;
+	margin: auto;
+	margin-bottom: 30px;
+}
+
+.search--block {
+	position: relative;
+}
+
+.input--google {
+	background: white;
+	border-radius: 22px;
+	box-sizing: border-box;
+	opacity: 1;
+	position: relative;
+	transition: none;
+	bottom: 0;
+	color: rgb(117, 117, 117);
+	font-size: 16px;
+	height: 44px;
+	left: 0;
+	line-height: 44px;
+	overflow: hidden;
+	right: 44px;
+	text-align: initial;
+	text-overflow: ellipsis;
+	top: 0;
+	user-select: none;
+	vertical-align: middle;
+	visibility: inherit;
+	margin: 0 auto 0 auto;
+	min-width: 480px;
+	border: none;
+	padding: 0 15px 0 44px;
+	outline: none;
+}
+
+.img--loupe {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 16px;
+	margin: 14px;
+}
+
+
+.img--loupe path{ 
+	fill: rgb(117, 117, 117)
+}
+
+.other__block {
+	display: flex;
+	margin-top: 20px;
+	width: 480px;
+}
+
+.other__block>div {
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	transition: all .2s ease;
+	cursor: pointer;
+}
+
+.other__block>div:hover {
+	background: #222;
+}
+
