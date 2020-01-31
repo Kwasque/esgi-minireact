@@ -1,21 +1,21 @@
-import MiniReact from './MiniReact.js';
-const MiniReactObj = new MiniReact();
+import MiniReactClass from './MiniReact.js';
+const MiniReact = new MiniReactClass;
 
-import MiniReactDOM from './MiniReactDOM.js';
-const MiniReactDOMObj = new MiniReactDOM();
+import MiniReactDOMClass from './MiniReactDOM.js';
+const MiniReactDOM = new MiniReactDOMClass();
 
-import BodyClass from './body.js';
-const body = new BodyClass();
+import RouterClass from './Router.js';
+var Router = new RouterClass;
 
-class MainClass extends MiniReact {
+class MainClass extends MiniReactClass {
     render() {
         return (
-            MiniReactObj.createElement('div', {class: "page__all"}, 
-                MiniReactObj.createElement(body, {},)
-            )
+            Router.View()
         );
     }
 }
 const Main = new MainClass();
 
-MiniReactDOMObj.render(Main, document.getElementById('root'));
+MiniReactDOM.render(Main, document.getElementById('root'));
+
+MiniReact.addEvent();

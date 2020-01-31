@@ -22,12 +22,25 @@ String.prototype.interpolate = function(obj) {
     return str
 }
 
+var i = 0;
+var eventClickToElem = [];
+
 export default class MiniReact {
+    events = [];
     constructor() {
         return this.render();
     }
     
     createElement(name, attributes) {
+        if (attributes !== null) {
+            for (let [key, value] of Object.entries(attributes)) {
+                if (key == "Click") {
+                    eventClickToElem.push(value);
+                    this.events.push(value);
+                    delete attributes[key];
+                }
+            }
+        }
         if (typeof name == 'string') {
             var elem = document.createElement(name);
             for (let i = 2; i<arguments.length; i++){
@@ -36,7 +49,7 @@ export default class MiniReact {
                 } else {
                     elem.appendChild(arguments[i]);
                 }
-            } 
+            }
             if (attributes !== null) {
                 for (let [key, value] of Object.entries(attributes)) {
                     if (typeof value == "string") {
@@ -44,9 +57,10 @@ export default class MiniReact {
                     }
                 }
             }
-            return elem;
         } else if (typeof name == 'object') {
-            name.innerHTML = name.innerHTML.interpolate(attributes);
+            if (name.innerHTML) {
+                name.innerHTML = name.innerHTML.interpolate(attributes);
+            }
             var elem = name;
             for (let i = 2; i<arguments.length; i++){
                 if (typeof arguments[i] == "string") {
@@ -56,15 +70,28 @@ export default class MiniReact {
                 }
             }
             if (attributes !== null) {
-            for (let [key, value] of Object.entries(attributes)) {
+                for (let [key, value] of Object.entries(attributes)) {
                     if (typeof value == "string") {
                         elem.setAttribute(key, value.interpolate(attributes));
                     }
                 }
             }
-            return elem;
         }
+        this.events.forEach(function () {
+            elem.setAttribute('id', 'event-id-' + i);
+            i++;
+        });
+        return elem;
+    }
+
+    addEvent() {
+        eventClickToElem.forEach(function(element, index) {
+            document.getElementById("event-id-" + index).addEventListener("click", function () {
+                eval(element);
+            });
+        });
     }
 
     render() {}
 }
+
