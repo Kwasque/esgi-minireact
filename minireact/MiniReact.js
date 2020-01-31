@@ -26,17 +26,17 @@ var i = 0;
 var eventClickToElem = [];
 
 export default class MiniReact {
-    events = [];
     constructor() {
         return this.render();
     }
     
     createElement(name, attributes) {
+        let events = [];
         if (attributes !== null) {
             for (let [key, value] of Object.entries(attributes)) {
                 if (key == "Click") {
                     eventClickToElem.push(value);
-                    this.events.push(value);
+                    events.push(value);
                     delete attributes[key];
                 }
             }
@@ -77,7 +77,7 @@ export default class MiniReact {
                 }
             }
         }
-        this.events.forEach(function () {
+        events.forEach(function () {
             elem.setAttribute('id', 'event-id-' + i);
             i++;
         });
@@ -86,9 +86,11 @@ export default class MiniReact {
 
     addEvent() {
         eventClickToElem.forEach(function(element, index) {
-            document.getElementById("event-id-" + index).addEventListener("click", function () {
-                eval(element);
-            });
+            if (document.getElementById("event-id-" + index)) {
+                document.getElementById("event-id-" + index).addEventListener("click", function () {
+                    eval(element);
+                });
+            }
         });
     }
 

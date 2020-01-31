@@ -1,9 +1,7 @@
 import MiniReactClass from '../minireact/MiniReact.js';
  const MiniReact = new MiniReactClass();
-import SearchIconClass from './search-icon.js';
-const searchicon = new SearchIconClass();
-import RouteClass from '../minireact/Route.js';
-const Route = new RouteClass();
+ import SearchIconClass from './search-icon.js';
+ const searchicon = new SearchIconClass();
 
 export default class BodyClass extends MiniReactClass {
 	render() {
@@ -25,20 +23,17 @@ export default class BodyClass extends MiniReactClass {
 				),
 				MiniReact.createElement("div", 
 					{class: "other__block"},
-					MiniReact.createElement("div", {class: "logo--block"}, 
+					MiniReact.createElement("div", {class: "logo--block", Click: "console.log('images-icon');"}, 
 						MiniReact.createElement("img", {src: "assets/icons/images-icon.svg"}),
 						MiniReact.createElement("span", null, "Images")
 					),
-					MiniReact.createElement("div", {class: "logo--block"}, 
+					MiniReact.createElement("div", {class: "logo--block", Click: "console.log('maps-icon');"}, 
 						MiniReact.createElement("img", {src: "assets/icons/maps-icon.svg"}),
 						MiniReact.createElement("span", null, "Maps")
 					),
-					MiniReact.createElement("div", {class: "logo--block"}, 
+					MiniReact.createElement("div", { class: "logo--block", Click: "console.log('video-icon');"},
 						MiniReact.createElement("img", {src: "assets/icons/video-icon.svg"}),
 						MiniReact.createElement("span", null, "Vidéos")
-					),
-					MiniReact.createElement(Route, null
-						
 					)
 				)
 			)
