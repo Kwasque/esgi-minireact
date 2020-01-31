@@ -1,4 +1,4 @@
-import MiniReactClass from './MiniReact.js';
+import MiniReactClass from '../minireact/MiniReact.js';
 const MiniReact = new MiniReactClass();
 
 import BodyClass from './body.js';

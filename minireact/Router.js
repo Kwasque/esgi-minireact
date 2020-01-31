@@ -1,5 +1,5 @@
 
-import GoogleSearchClass from './google-search.js';
+import GoogleSearchClass from '../components/google-search.js';
 const GoogleSearch = new GoogleSearchClass();
 
 export default class RouterClass {

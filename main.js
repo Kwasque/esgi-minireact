@@ -1,10 +1,10 @@
-import MiniReactClass from './MiniReact.js';
+import MiniReactClass from './minireact/MiniReact.js';
 const MiniReact = new MiniReactClass;
 
-import MiniReactDOMClass from './MiniReactDOM.js';
+import MiniReactDOMClass from './minireact/MiniReactDOM.js';
 const MiniReactDOM = new MiniReactDOMClass();
 
-import RouterClass from './Router.js';
+import RouterClass from './minireact/Router.js';
 var Router = new RouterClass;
 
 class MainClass extends MiniReactClass {
