@@ -1,8 +1,8 @@
 Object.prototype.prop_access = function(str) {
     if(typeof str !== "string" || !str) return '';
 
-    var newObj = this, returnValue = '';
-    var strSplit = str.split(".");
+    let newObj = this, returnValue = '';
+    let strSplit = str.split(".");
     strSplit.forEach(element => {
         if (!returnValue) {
             newObj = newObj[element];
@@ -22,11 +22,17 @@ Object.prototype.prop_access = function(str) {
 
 //CHANGER PAR UN REPLACE AVEC REGEX
 String.prototype.interpolate = function(obj) {
-    var str = this;
+    let str = this;
+    let newObj = [];
     while(str.indexOf("{{") >= 0 && str.indexOf("}}") >= 0) {
+        newObj.push(str.split("{{")[1].split("}}")[0].trim());
         str = str.split("{{")[0] + obj.prop_access(str.split("{{")[1].split("}}")[0].trim()) + str.substr(str.indexOf("}}") + 2, str.length);
     } 
-    return str
+    let response = {
+        newObj: newObj,
+        str: str
+    }
+    return response
 }
 
 export default class MiniReact {
@@ -36,7 +42,7 @@ export default class MiniReact {
     
     createElement(name, attributes) {
         if (typeof name == 'string') {
-            var elem = document.createElement(name);
+            let elem = document.createElement(name);
             for (let i = 2; i<arguments.length; i++){
                 if (typeof arguments[i] == "string") {
                     elem.appendChild(document.createTextNode(arguments[i]));
@@ -49,9 +55,9 @@ export default class MiniReact {
             }
             return elem;
         } else if (typeof name == 'object') {
-            name.innerHTML = name.innerHTML.interpolate(attributes);
-            console.log(name);
-            var elem = name;
+            let newName = name.innerHTML.interpolate(attributes);
+            name.innerHTML = newName.str;
+            let elem = name;
             for (let i = 2; i<arguments.length; i++){
                 if (typeof arguments[i] == "string") {
                     elem.appendChild(document.createTextNode(arguments[i]));
@@ -60,7 +66,9 @@ export default class MiniReact {
                 }
             } 
             for (let [key, value] of Object.entries(attributes)) {
-                elem.setAttribute(key, value);
+                if (newName.newObj.indexOf(key) < 0) {
+                    elem.setAttribute(key, value);
+                }
             }
             return elem;
         }

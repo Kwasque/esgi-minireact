@@ -13,11 +13,16 @@ const CheckBox = new CheckBoxClass();
 import TextAreaClass from './textarea.js';
 const TextArea = new TextAreaClass();
 
+import BodyClass from './body.js';
+const Body = new BodyClass();
+
 class MainClass extends MiniReact {
     render() {
         return (
             MiniReactObj.createElement('div', {class: "class-test"}, 
                 MiniReactObj.createElement('h1', {}, "Contacts"),
+                MiniReactObj.createElement(Button, {Button1: "Button1"}),
+                MiniReactObj.createElement(Button, {Button2: "Button2"}),
                 MiniReactObj.createElement('ul', {},
                     MiniReactObj.createElement('li', {},
                         MiniReactObj.createElement('h2', {onClick: 'console.log("test");'}, "James Nelson"),
@@ -27,7 +32,7 @@ class MainClass extends MiniReact {
                         MiniReactObj.createElement(CheckBox, {Text: "Checkbox Text", Test2: "qsdq"})
                     ),
                     MiniReactObj.createElement('li', {},
-                        MiniReactObj.createElement(Button, {Text: 'Text du button', Text2: 'Text2 du button', onClick: 'console.log("test");'})
+                        MiniReactObj.createElement(Button, {})
                     ),
                     MiniReactObj.createElement('li', {},
                         MiniReactObj.createElement(TextArea, {Text: 'Text area text personnalisé'})
@@ -35,7 +40,8 @@ class MainClass extends MiniReact {
                     MiniReactObj.createElement('li', {},
                         MiniReactObj.createElement('h2', {}, "Joe Citizen"),
                         MiniReactObj.createElement('a', {href: 'mailto:joe@example.com'}, 'joe@example.com')
-                    )
+                    ),
+                    MiniReactObj.createElement(Body, {Text1: 'Test text 1'})
                 )
             )
         );
