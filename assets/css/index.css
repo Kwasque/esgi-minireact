@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body {
+	margin: 0;
+}
+
+.page__all {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	background: #333;	
+}
+
+.google__block {
+	display: flex;
+	flex-direction: column;
+	width: max-content;
+	margin: auto;
+}
+
+.logo--google {
+	height: 110px;
+	margin: auto;
+	margin-bottom: 30px;
+}
+
+.search--block {
+	position: relative;
+}
+
+.input--google {
+	background: white;
+	border-radius: 22px;
+	box-sizing: border-box;
+	opacity: 1;
+	position: relative;
+	transition: none;
+	bottom: 0;
+	color: rgb(117, 117, 117);
+	font-size: 16px;
+	height: 44px;
+	left: 0;
+	line-height: 44px;
+	overflow: hidden;
+	right: 44px;
+	text-align: initial;
+	text-overflow: ellipsis;
+	top: 0;
+	user-select: none;
+	vertical-align: middle;
+	visibility: inherit;
+	margin: 0 auto 0 auto;
+	min-width: 480px;
+	border: none;
+	padding: 0 15px 0 44px;
+	outline: none;
+	font-family: "Roboto";
+}
+
+.img--loupe {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 16px;
+	margin: 14px;
+}
+
+
+.img--loupe path{ 
+	fill: rgb(117, 117, 117)
+}
+
+.other__block {
+	display: flex;
+	margin-top: 70px;
+	width: 480px;
+}
+
+.other__block>div {
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	transition: all .2s ease;
+	cursor: pointer;
+}
+
+.other__block>div:hover {
+}
+
+.logo--block {
+	display: flex;
+	position: relative;
+}
+
+.logo--block:hover img {
+	transform: translateY(-5px);
+}
+
+.logo--block:hover span {
+	transform: translateY(5px);
+	opacity: 1;
+}
+
+.logo--block img {
+	height: 50px;
+	margin: 15px auto;
+	transition: all .3s ease;
+	transform: translateY(0);
+}
+
+.logo--block span {
+	color: #fff;
+	position: absolute;
+	right: 0;
+	left: 0;
+	margin: auto;
+	bottom: 15px;
+	width: max-content;
+	font-family: "Montserrat";
+	font-size: 14px;
+	opacity: 0;
+	transition: all .3s ease;
+	transform: translateY(0);
+}
