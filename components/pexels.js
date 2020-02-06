@@ -1,14 +1,14 @@
 import MiniReactClass from '../minireact/MiniReact.js';
 const MiniReact = new MiniReactClass();
 
-import BodyClass from './body.js';
-const body = new BodyClass();
+import bodyPexelsClass from './body-pexels.js';
+const bodyPexels = new bodyPexelsClass();
 
-export default class GoogleSearch extends MiniReactClass {
+export default class Pexels extends MiniReactClass {
 	render() {
 		return (
 			MiniReact.createElement('div', {class: "page__all"}, 
-				MiniReact.createElement(body, {}, )
+				MiniReact.createElement(bodyPexels, {}, )
 			)
 		);
 	}

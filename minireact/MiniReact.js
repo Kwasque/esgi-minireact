@@ -92,11 +92,10 @@ export default class MiniReact {
                 document.getElementById("event-id-" + index).addEventListener("click", function () {
                     if (element.search("Router.push") >= 0) {
                         let str = element.split("('")[1].split("')")[0].trim();
-                        var routerLocalStorage = JSON.parse(localStorage.getItem('router'));
-                        if (routerLocalStorage == null) routerLocalStorage = [];
-                        if (routerLocalStorage[routerLocalStorage.length - 1] != str) routerLocalStorage.push(str);
-                        localStorage.setItem('router', JSON.stringify(routerLocalStorage));
-                        MiniReactDOM.render(routerLocalStorage[routerLocalStorage.length - 1], document.getElementById('root'));
+                        let router = localStorage.getItem('router').split(',');
+                        if (router[router.length - 1] != str) router.push(str);
+                        localStorage.setItem('router', router);
+                        document.location.reload(true);
                     } else {
                         eval(element);
                     }
