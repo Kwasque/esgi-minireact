@@ -16,13 +16,11 @@ Object.prototype.prop_access = function(str) {
 String.prototype.interpolate = function(obj) {
     var str = this;
     while(str.indexOf("{{") >= 0 && str.indexOf("}}") >= 0) {
+        console.log(str);
         str = str.split("{{")[0] + obj.prop_access(str.split("{{")[1].split("}}")[0].trim()) + str.substr(str.indexOf("}}") + 2, str.length);
     } 
     return str
 }
-
-import MiniReactDOMClass from '/minireact/MiniReactDOM.js';
-const MiniReactDOM = new MiniReactDOMClass();
 
 var i = 0;
 var eventClickToElem = [];
@@ -47,7 +45,7 @@ export default class MiniReact {
             var elem = document.createElement(name);
             for (let i = 2; i<arguments.length; i++){
                 if (typeof arguments[i] == "string") {
-                    elem.appendChild(document.createTextNode(arguments[i]));
+                    elem.appendChild(document.createTextNode(arguments[i].interpolate(attributes)));
                 } else {
                     elem.appendChild(arguments[i]);
                 }
@@ -66,7 +64,7 @@ export default class MiniReact {
             var elem = name;
             for (let i = 2; i<arguments.length; i++){
                 if (typeof arguments[i] == "string") {
-                    elem.appendChild(document.createTextNode(arguments[i]));
+                    elem.appendChild(document.createTextNode(arguments[i].interpolate(attributes)));
                 } else {
                     elem.appendChild(arguments[i]);
                 }

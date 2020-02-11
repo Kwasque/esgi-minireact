@@ -45,15 +45,17 @@ export default class bodyGoogleClass extends MiniReactClass {
  	}
 }
 
-if (localStorage.getItem('router').split(',')[localStorage.getItem('router').split(',').length - 1] == "Google") {
-	console.log('Google !');
-	function keypressed(event) {
-		let router = localStorage.getItem('router').split(',');
-		if (router[router.length - 1] == 'Google' && event.keyCode == "13") {
-			window.open('https://www.google.com/search?q=' + document.getElementsByClassName('input--google')[0].value, '_blank');
-			document.getElementsByClassName('input--google')[0].value = null;
+setTimeout(() => {
+	if (localStorage.getItem('router').split(',')[localStorage.getItem('router').split(',').length - 1] == "Google") {
+		console.log('Google !');
+		function keypressed(event) {
+			let router = localStorage.getItem('router').split(',');
+			if (router[router.length - 1] == 'Google' && event.keyCode == "13") {
+				window.open('https://www.google.com/search?q=' + document.getElementsByClassName('input--google')[0].value, '_blank');
+				document.getElementsByClassName('input--google')[0].value = null;
+			}
 		}
-	}
 
-	document.body.addEventListener('keypress', keypressed);
-}
+		document.body.addEventListener('keypress', keypressed);
+	}
+}, 1000);
