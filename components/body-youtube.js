@@ -16,7 +16,8 @@ export default class bodyYoutubeClass extends MiniReactClass {
 				MiniReact.createElement("div", {class: "search--block"},
 					MiniReact.createElement("input", {
 						type: "text",
-						placeholder: "Effectuez une recherche sur Youtube",
+						var: "Youtube",
+						placeholder: "Effectuez une recherche sur {{ var }}",
 						class: "input--google"
 					}),
 					MiniReact.createElement("img", {

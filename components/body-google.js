@@ -18,7 +18,8 @@ export default class bodyGoogleClass extends MiniReactClass {
 				MiniReact.createElement("div", {class: "search--block"},
 					MiniReact.createElement("input", {
 						type: "text",
-						placeholder: "Effectuez une recherche sur Google",
+						var: "Google",
+						placeholder: "Effectuez une recherche sur {{ var }}",
 						class: "input--google"
 					}),
 					MiniReact.createElement("img", {

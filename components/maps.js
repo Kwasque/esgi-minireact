@@ -8,8 +8,7 @@ export default class Maps extends MiniReactClass {
 	render() {
 		return (
 			MiniReact.createElement('div', {class: "page__all"}, 
-				MiniReact.createElement(bodyMaps, {}, ),
-				MiniReact.createElement('div', { test: '1' }, "Test : {{ test }}")
+				MiniReact.createElement(bodyMaps, {}, )
 			)
 		);
 	}

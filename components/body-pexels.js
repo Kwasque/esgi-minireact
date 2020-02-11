@@ -18,7 +18,8 @@ export default class bodyPexelsClass extends MiniReactClass {
 				MiniReact.createElement("div", {class: "search--block"},
 					MiniReact.createElement("input", {
 						type: "text",
-						placeholder: "Effectuez une recherche sur Pexels",
+						var: "Pexels",
+						placeholder: "Effectuez une recherche sur {{ var }}",
 						class: "input--google"
 					}),
 					MiniReact.createElement("img", {

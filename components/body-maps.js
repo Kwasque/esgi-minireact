@@ -18,7 +18,8 @@ export default class bodyMapsClass extends MiniReactClass {
 				MiniReact.createElement("div", {class: "search--block"},
 					MiniReact.createElement("input", {
 						type: "text",
-						placeholder: "Effectuez une recherche sur Maps",
+						var: "Maps",
+						placeholder: "Effectuez une recherche sur {{ var }}",
 						class: "input--google"
 					}),
 					MiniReact.createElement("img", {
