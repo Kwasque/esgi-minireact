@@ -1,19 +1,19 @@
-import MiniReactClass from './minireact/MiniReact.js';
+import MiniReactClass from '/minireact/MiniReact.js';
 const MiniReact = new MiniReactClass;
 
-import MiniReactDOMClass from './minireact/MiniReactDOM.js';
+import MiniReactDOMClass from '/minireact/MiniReactDOM.js';
 const MiniReactDOM = new MiniReactDOMClass();
 
-import GoogleClass from '../components/google.js'
+import GoogleClass from '/components/google.js'
 const Google = new GoogleClass();
 
-import YoutubeClass from '../components/youtube.js'
+import YoutubeClass from '/components/youtube.js'
 const Youtube = new YoutubeClass();
 
-import PexelsClass from '../components/pexels.js'
+import PexelsClass from '/components/pexels.js'
 const Pexels = new PexelsClass();
 
-import MapsClass from '../components/maps.js'
+import MapsClass from '/components/maps.js'
 const Maps = new MapsClass();
 
 let router = localStorage.getItem('router');

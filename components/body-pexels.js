@@ -1,12 +1,16 @@
-import MiniReactClass from '../minireact/MiniReact.js';
+import MiniReactClass from '/minireact/MiniReact.js';
  const MiniReact = new MiniReactClass();
- import SearchIconClass from './search-icon.js';
+ import SearchIconClass from '/components/search-icon.js';
  const searchicon = new SearchIconClass();
 
 export default class bodyPexelsClass extends MiniReactClass {
 	render() {
  		return (
 			MiniReact.createElement("div", {class: "google__block"}, 
+				MiniReact.createElement("div", {class: "back--button", Click: "Router.back();"},
+					MiniReact.createElement("img", {src: "assets/icons/left-arrow.svg"}),
+					MiniReact.createElement("span", null, "Retour")
+				),
 				MiniReact.createElement("img", { 
 					src: "assets/icons/pexels-icon.svg", 
 					class: "logo--google" 
@@ -41,12 +45,15 @@ export default class bodyPexelsClass extends MiniReactClass {
  	}
 }
 
-function keypressed(event) {
-	let router = localStorage.getItem('router').split(',');
-	if (router[router.length - 1] == 'Pexels' && event.keyCode == "13") {
-		window.open('https://www.pexels.com/search/' + document.getElementsByClassName('input--google')[0].value, '_blank');
-		document.getElementsByClassName('input--google')[0].value = null;
+if (localStorage.getItem('router').split(',')[localStorage.getItem('router').split(',').length - 1] == "Pexels") {
+	console.log('Pexels !');
+	function keypressed(event) {
+		let router = localStorage.getItem('router').split(',');
+		if (router[router.length - 1] == 'Pexels' && event.keyCode == "13") {
+			window.open('https://www.pexels.com/search/' + document.getElementsByClassName('input--google')[0].value, '_blank');
+			document.getElementsByClassName('input--google')[0].value = null;
+		}
 	}
-}
 
-document.body.addEventListener('keypress', keypressed);
+	document.body.addEventListener('keypress', keypressed);
+}

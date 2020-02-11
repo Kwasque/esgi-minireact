@@ -21,7 +21,7 @@ String.prototype.interpolate = function(obj) {
     return str
 }
 
-import MiniReactDOMClass from './MiniReactDOM.js';
+import MiniReactDOMClass from '/minireact/MiniReactDOM.js';
 const MiniReactDOM = new MiniReactDOMClass();
 
 var i = 0;
@@ -94,6 +94,11 @@ export default class MiniReact {
                         let str = element.split("('")[1].split("')")[0].trim();
                         let router = localStorage.getItem('router').split(',');
                         if (router[router.length - 1] != str) router.push(str);
+                        localStorage.setItem('router', router);
+                        document.location.reload(true);
+                    } else if (element.search("Router.back") >= 0) {
+                        let router = localStorage.getItem('router').split(',');
+                        router.length -= 1;
                         localStorage.setItem('router', router);
                         document.location.reload(true);
                     } else {

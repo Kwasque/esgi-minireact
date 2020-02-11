@@ -1,7 +1,7 @@
-import MiniReactClass from '../minireact/MiniReact.js';
+import MiniReactClass from '/minireact/MiniReact.js';
 const MiniReact = new MiniReactClass();
 
-import bodyMapsClass from './body-maps.js';
+import bodyMapsClass from '/components/body-maps.js';
 const bodyMaps = new bodyMapsClass();
 
 export default class Maps extends MiniReactClass {

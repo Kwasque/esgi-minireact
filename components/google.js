@@ -1,7 +1,7 @@
-import MiniReactClass from '../minireact/MiniReact.js';
+import MiniReactClass from '/minireact/MiniReact.js';
 const MiniReact = new MiniReactClass();
 
-import bodyGoogleClass from './body-google.js';
+import bodyGoogleClass from '/components/body-google.js';
 const bodyGoogle = new bodyGoogleClass();
 
 export default class Google extends MiniReactClass {

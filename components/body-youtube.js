@@ -1,10 +1,14 @@
-import MiniReactClass from '../minireact/MiniReact.js';
+import MiniReactClass from '/minireact/MiniReact.js';
  const MiniReact = new MiniReactClass();
 
 export default class bodyYoutubeClass extends MiniReactClass {
 	render() {
  		return (
 			MiniReact.createElement("div", {class: "google__block"}, 
+				MiniReact.createElement("div", {class: "back--button", Click: "Router.back();"},
+					MiniReact.createElement("img", {src: "assets/icons/left-arrow.svg"}),
+					MiniReact.createElement("span", null, "Retour")
+				),
 				MiniReact.createElement("img", { 
 					src: "assets/img/youtube-logo-grand.png", 
 					class: "logo--google" 
@@ -39,12 +43,15 @@ export default class bodyYoutubeClass extends MiniReactClass {
  	}
 }
 
-function keypressed(event) {
-	let router = localStorage.getItem('router').split(',');
-	if (router[router.length - 1] == 'Youtube' && event.keyCode == "13") {
-		window.open('https://www.youtube.com/results?search_query=' + document.getElementsByClassName('input--google')[0].value, '_blank');
-		document.getElementsByClassName('input--google')[0].value = null;
+if (localStorage.getItem('router').split(',')[localStorage.getItem('router').split(',').length - 1] == "Youtube") {
+	console.log('Youtube !');
+	function keypressed(event) {
+		let router = localStorage.getItem('router').split(',');
+		if (router[router.length - 1] == 'Youtube' && event.keyCode == "13") {
+			window.open('https://www.youtube.com/results?search_query=' + document.getElementsByClassName('input--google')[0].value, '_blank');
+			document.getElementsByClassName('input--google')[0].value = null;
+		}
 	}
-}
 
-document.body.addEventListener('keypress', keypressed);
+	document.body.addEventListener('keypress', keypressed);
+}

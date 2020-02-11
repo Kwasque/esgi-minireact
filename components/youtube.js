@@ -1,7 +1,7 @@
-import MiniReactClass from '../minireact/MiniReact.js';
+import MiniReactClass from '/minireact/MiniReact.js';
 const MiniReact = new MiniReactClass();
 
-import bodyYoutubeClass from './body-youtube.js';
+import bodyYoutubeClass from '/components/body-youtube.js';
 const bodyYoutube = new bodyYoutubeClass();
 
 export default class GoogleYoutube extends MiniReactClass {

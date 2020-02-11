@@ -1,12 +1,16 @@
 import MiniReactClass from '../minireact/MiniReact.js';
  const MiniReact = new MiniReactClass();
- import SearchIconClass from './search-icon.js';
+ import SearchIconClass from '/components/search-icon.js';
  const searchicon = new SearchIconClass();
 
 export default class bodyMapsClass extends MiniReactClass {
 	render() {
  		return (
 			MiniReact.createElement("div", {class: "google__block"}, 
+				MiniReact.createElement("div", {class: "back--button", Click: "Router.back();"},
+					MiniReact.createElement("img", {src: "assets/icons/left-arrow.svg"}),
+					MiniReact.createElement("span", null, "Retour")
+				),
 				MiniReact.createElement("img", { 
 					src: "assets/img/google-maps-logo-grand.png", 
 					class: "logo--google" 
@@ -18,7 +22,7 @@ export default class bodyMapsClass extends MiniReactClass {
 						class: "input--google"
 					}),
 					MiniReact.createElement("img", {
-						class: "img--loupe", src: "assets/icons/search-icon.svg"
+						class: "img--loupe", id: "search", src: "assets/icons/search-icon.svg"
 					})
 				),
 				MiniReact.createElement("div", 
@@ -41,12 +45,15 @@ export default class bodyMapsClass extends MiniReactClass {
  	}
 }
 
-function keypressed(event) {
-	let router = localStorage.getItem('router').split(',');
-	if (router[router.length - 1] == 'Maps' && event.keyCode == "13") {
-		window.open('https://www.google.fr/maps/search/' + document.getElementsByClassName('input--google')[0].value, '_blank');
-		document.getElementsByClassName('input--google')[0].value = null;
+if (localStorage.getItem('router').split(',')[localStorage.getItem('router').split(',').length - 1] == "Maps") {
+	console.log('Maps !');
+	function keypressed(event) {
+		let router = localStorage.getItem('router').split(',');
+		if (router[router.length - 1] == 'Maps' && event.keyCode == "13") {
+			window.open('https://www.google.fr/maps/search/' + document.getElementsByClassName('input--google')[0].value, '_blank');
+			document.getElementsByClassName('input--google')[0].value = null;
+		}
 	}
-}
 
-document.body.addEventListener('keypress', keypressed);
+	document.body.addEventListener('keypress', keypressed);
+}

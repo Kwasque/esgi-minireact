@@ -1,4 +1,4 @@
-import MiniReactClass from '../minireact/MiniReact.js';
+import MiniReactClass from '/minireact/MiniReact.js';
 const MiniReact = new MiniReactClass();
 
 export default class SearchIconClass extends MiniReactClass {

@@ -1,7 +1,7 @@
-import MiniReactClass from '../minireact/MiniReact.js';
+import MiniReactClass from '/minireact/MiniReact.js';
 const MiniReact = new MiniReactClass();
 
-import bodyPexelsClass from './body-pexels.js';
+import bodyPexelsClass from '/components/body-pexels.js';
 const bodyPexels = new bodyPexelsClass();
 
 export default class Pexels extends MiniReactClass {
